@@ -6,6 +6,7 @@
 * Check for open issues and feature requests. 
 **If there is an issue that you are interested in, leave a comment, and the issue can be assigned to you!**
 * Join the slack channel hosted [here](https://opensourceideas.herokuapp.com)
+* Check out the NWS API and documentation on this API [here](https://www.weather.gov/documentation/services-web-api)
 * Fork a copy of the repository, clone it to your local environment, and open the project in Android Studio!
 * Once you finish and commit your changes to your forked repository, open a pull request, 
 attribute the request to the issue that is assigned to you, and submit your changes! We'll review them and accept/decline the changes!
@@ -37,3 +38,11 @@ originated from the android-boilerplate project created by the UK company Ribot
 6. Create a `SignInPresenterTest`and write unit tests for `signIn(email)`. Remember to mock the  `SignInMvpView` and also the `DataManager`.
 7. Make your  `ActivitySignIn` implement `SignInMvpView` and implement the required methods like `showSignInSuccessful()`
 8. In your activity, inject a new instance of `SignInPresenter` and call `presenter.attachView(this)` from `onCreate` and `presenter.detachView()` from `onDestroy()`. Also, set up a click listener in your button that calls `presenter.signIn(email)`.
+
+### How to use the National Weather Service API
+* The endpoint for the NWS API is [https://api.weather.gov](https://api.weather.gov)
+* To get the forecast of your area, you first need the zone that your location resides in. You can do this by supplying your Latitude and Longitude coordinates to this endpoint: **https://api.weather.gov/points/xx.xxxx,yy.yyyy** where the x's are your latitude and y's are your longitude. This returns (along with some other data) your forecastZone ID. 
+* You can then use your zone ID for hourly forecasts [(https://api.weather.gov/gridpoints/{zone}/{grid,points}/forecast/hourly)](https://api.weather.gov/gridpoints/{zone}/{grid,points}/forecast/hourly), 5 day and 7 day forecasts [(https://api.weather.gov/gridpoints/{zone}/{grid,points}/forecast/)](https://api.weather.gov/gridpoints/{zone}/{grid,points}/forecast/), and active NWS alerts in your zone [(https://api.weather.gov/alerts/active/zone/{zone})](https://api.weather.gov/alerts/active/zone/{zone}).
+
+**The National Weather Service API is limited to zones inside the United States.**
+
